@@ -7,6 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { MoviesComponent } from './movies/movies.component';
+import { DataService } from './shared/data.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { MoviesComponent } from './movies/movies.component';
     AppRoutingModule,
     NgbModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
