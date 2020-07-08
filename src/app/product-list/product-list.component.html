@@ -1,1 +1,5 @@
-<p>product-list works!</p>
+<div *ngFor="let p of products">
+    <img class="img-responsive" src={{p.poster_path}} >
+    <h3 class="muted" *ngIf="p.title">{{p.title}}</h3>
+    <h3 class="muted" *ngIf="p.name">{{p.name}}</h3>
+</div>
