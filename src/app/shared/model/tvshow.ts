@@ -13,3 +13,10 @@ export interface TVShow {
     overview: string;
     poster_path: string;
 }
+
+export interface TVResponse{
+    page: number,
+    total_results: number,
+    total_pages: number,
+    results: TVShow[]
+}

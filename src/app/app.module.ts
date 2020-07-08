@@ -9,13 +9,15 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { MoviesComponent } from './movies/movies.component';
 import { DataService } from './shared/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { TvShowsComponent } from './tv-shows/tv-shows.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     ProductListComponent,
-    MoviesComponent
+    MoviesComponent,
+    TvShowsComponent
   ],
   imports: [
     BrowserModule,
