@@ -8,11 +8,13 @@ import { Product } from '../shared/model/product';
 })
 export class ProductListComponent implements OnInit {
   @Input()
-  products:Product;
+  products:Product[];
   
   constructor() { }
 
   ngOnInit(): void {
+    console.log("Product List Component Initializating...")
+    console.log(this.products);
   }
 
 }
