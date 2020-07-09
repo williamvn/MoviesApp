@@ -1,9 +1,12 @@
-<nav aria-label="..." class="mt-5">
+<nav aria-label="..." class="mt-5 pagination-group">
     <ul class="pagination">
-      <li class="page-item disabled">
+      <li class="page-item">
         <a class="page-link" (click)="previousPage()" tabindex="-1">Previous</a>
       </li>
-      <li class="page-item" *ngFor="let i of currentPages"><a class="page-link" href="#" >{{i}}</a></li>
+      <div *ngFor="let i of currentPages" (click)="loadPage(i)">
+        <li class="page-item active" *ngIf="page==i" ><a class="page-link">{{i}}</a></li>
+        <li class="page-item" *ngIf="page!=i"><a class="page-link">{{i}}</a></li>
+      </div>
       <li class="page-item">
         <a class="page-link" (click)="nextPage()" tabindex="-1">Next</a>
       </li>

@@ -12,6 +12,8 @@ export class DataService {
 
   tvshows: TVShow[];
   movies: Movie[];
+  totalMoviePages:number;
+  totalTVPages:number;
   constructor(private httpClient: HttpClient) { }
 
   loadMovies(page = 1):Observable<boolean> {
@@ -20,6 +22,7 @@ export class DataService {
       .pipe(
         map((data: MovieResponse) => {
           this.movies = data.results;
+          this.totalMoviePages = data.total_pages;
           return true;
         }));
   }
@@ -29,6 +32,7 @@ export class DataService {
       .pipe(
         map((data: TVResponse) => {
           this.tvshows = data.results;
+          this.totalTVPages = data.total_pages;
           return true;
         }));
   }

@@ -10,6 +10,7 @@ import { TVShow } from '../shared/model/tvshow';
 export class TvShowsComponent implements OnInit {
 
   tvshows: TVShow[] = [];
+  totalPages:number;
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
@@ -18,6 +19,20 @@ export class TvShowsComponent implements OnInit {
       {
         if(success){
          this.tvshows = this.data.tvshows;
+         this.totalPages = this.data.totalTVPages;
+        }
+        else{
+          alert("The Movies Couldn't load");
+        }
+    });
+  }
+
+  loadPage(p:number){
+    this.data.loadTVShows(p).subscribe(success =>
+      {
+        if(success){
+         this.tvshows = this.data.tvshows;
+         this.totalPages = this.data.totalTVPages;
         }
         else{
           alert("The Movies Couldn't load");
