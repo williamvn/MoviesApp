@@ -11,6 +11,7 @@ export class MoviesComponent implements OnInit {
 
   movies:Movie[] = [];
   totalPages:number;
+  type:string = "movie"
   constructor(private data:DataService) { }
 
   ngOnInit(): void {

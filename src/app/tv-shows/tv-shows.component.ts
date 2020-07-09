@@ -11,6 +11,7 @@ export class TvShowsComponent implements OnInit {
 
   tvshows: TVShow[] = [];
   totalPages:number;
+  type:string = "tv-show";
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
