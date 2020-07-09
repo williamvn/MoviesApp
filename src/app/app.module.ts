@@ -11,6 +11,7 @@ import { DataService } from './shared/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     ProductListComponent,
     MoviesComponent,
     TvShowsComponent,
-    PaginationComponent
+    PaginationComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
