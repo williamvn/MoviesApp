@@ -7,7 +7,7 @@
 	height: 320px;
 	margin: 80px 0;
 	text-align: center;
-	border: 1px solid #ddd;
+	border: 1px solid rgb(100, 100, 100);
 	cursor: pointer;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
@@ -64,4 +64,8 @@
 	-webkit-transform: scale(1);
 	-ms-transform: scale(1);
 	transform: scale(1);
+}
+
+.title-bar{
+	background-color: #f05e0a;
 }

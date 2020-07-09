@@ -15,6 +15,7 @@ import { ProductDetail } from '../shared/model/product-detail';
 export class ProductDetailsComponent implements OnInit {
 
   product: ProductDetail;
+  stars: number[];
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
@@ -23,7 +24,6 @@ export class ProductDetailsComponent implements OnInit {
       var productType = params.get('product');
       var productId = +params.get('productId');
       if (productType === "movie") {
-        console.log(this.data.movies);
         var movies = this.data.movies.find(m => m.id == productId);
         this.product = this.mapToProductDetail(movies);
       }
@@ -33,7 +33,7 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
-  private mapToProductDetail(movie: Movie):ProductDetail {
+  private mapToProductDetail(movie: Movie): ProductDetail {
     return {
       name: movie.title,
       genre_ids: movie.genre_ids,
@@ -46,4 +46,8 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
+  counter(i: number) {
+    i = Math.floor(i);
+    return new Array(i);
+  }
 }
