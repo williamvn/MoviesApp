@@ -5,7 +5,7 @@ export interface TVShow {
     popularity: number;
     origin_country: string[];
     vote_count: number;
-    first_air_date: string;
+    first_air_date: Date;
     backdrop_path: string;
     original_language: string;
     id: number;
