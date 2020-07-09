@@ -61,6 +61,8 @@ export class PaginationComponent implements OnInit {
   }
 
   buildPagesArray() {
+    // const iter = range(this.minpage, this.maxpage);
+    // iter.subscribe(i=>this.currentPages.push(i));
     this.currentPages = [];
     for (let i = this.minpage; i < this.maxpage; i++) {
       this.currentPages.push(i);

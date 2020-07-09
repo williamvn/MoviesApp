@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { TvShowsComponent } from './tv-shows/tv-shows.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { HomeComponent } from './home/home.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     MoviesComponent,
     TvShowsComponent,
     PaginationComponent,
-    HomeComponent
+    HomeComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
