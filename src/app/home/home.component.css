@@ -8,6 +8,7 @@
 	margin: 80px 0;
 	text-align: center;
 	border: 1px solid #ddd;
+	cursor: pointer;
 	-webkit-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
@@ -35,15 +36,16 @@
 }
 
 .service:hover {
-	border-color: #00a8ff;
+	border-color: #d63131;
+	color: #f05e0a;
 }
 
 .service:hover .icon-holder {
-	top: -50px;
+	top: -30px;
 }
 
 .service:hover .heading {
-	top: -50px;
+	top: -30px;
 }
 
 .service .description {
