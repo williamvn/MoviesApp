@@ -19,7 +19,7 @@
                             <h6>Release: {{product.first_air_date}}</h6>
                             <h6>Rating: {{product.vote_average}}</h6>
                             <div class="d-flex flex-row">
-                                <img src="../../assets/img/star.png" width="10%" *ngFor='let in of counter(product.vote_average/2) ;let i = index'>
+                                <img src="../../assets/img/star.png" width="10%" *ngFor='let in of counter(product.vote_average/2)'>
                             </div>
                         </div>
                     </div>

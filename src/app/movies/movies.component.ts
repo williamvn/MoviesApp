@@ -16,23 +16,14 @@ export class MoviesComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("Movies Component Initializating...");
+    this.loadPage();
+  }
+
+  loadPage(p:number = 1){
     this.data.loadMovies().subscribe(success =>
       {
         if(success){
-         this.movies = this.data.movies;
-         this.totalPages = this.data.totalMoviePages;
-        }
-        else{
-          alert("The Movies Couldn't load");
-        }
-    });
-  }
-
-  loadPage(p:number){
-    this.data.loadMovies(p).subscribe(success =>
-      {
-        if(success){
-         this.movies = this.data.movies;
+         this.data.movies$.subscribe(m => this.movies = m);
          this.totalPages = this.data.totalMoviePages;
         }
         else{

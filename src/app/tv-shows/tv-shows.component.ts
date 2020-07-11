@@ -16,23 +16,14 @@ export class TvShowsComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("TV Show Component Initializating...");
-    this.data.loadTVShows().subscribe(success =>
-      {
-        if(success){
-         this.tvshows = this.data.tvshows;
-         this.totalPages = this.data.totalTVPages;
-        }
-        else{
-          alert("The Movies Couldn't load");
-        }
-    });
+    this.loadPage();
   }
 
-  loadPage(p:number){
+  loadPage(p:number = 1){
     this.data.loadTVShows(p).subscribe(success =>
       {
         if(success){
-         this.tvshows = this.data.tvshows;
+         this.data.tvshows$.subscribe(m => this.tvshows = m);
          this.totalPages = this.data.totalTVPages;
         }
         else{

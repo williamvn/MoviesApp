@@ -4,8 +4,8 @@ import { DataService } from '../shared/data.service';
 import * as _ from "lodash";
 import { TVShow } from '../shared/model/tvshow';
 import { Movie } from '../shared/model/movie';
-import { mapTo } from 'rxjs/operators';
 import { ProductDetail } from '../shared/model/product-detail';
+import { map, filter } from "rxjs/operators";
 
 @Component({
   selector: 'app-product-details',
@@ -24,11 +24,15 @@ export class ProductDetailsComponent implements OnInit {
       var productType = params.get('product');
       var productId = +params.get('productId');
       if (productType === "movie") {
-        var movies = this.data.movies.find(m => m.id == productId);
-        this.product = this.mapToProductDetail(movies);
+        this.data.movies$.subscribe(ms => {
+          var movie = ms.find(m => m.id == productId);
+          this.product = this.mapToProductDetail(movie);
+        });
       }
       else {
-        this.product = this.data.tvshows.find(tv => tv.id == productId);
+        this.data.tvshows$.subscribe(tvs => {
+          this.product = tvs.find(tv => tv.id == productId);
+        });
       }
     });
   }
