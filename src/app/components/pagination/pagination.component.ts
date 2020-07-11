@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, DoCheck } from '@angular/core';
 import { range } from 'rxjs';
 
 @Component({
@@ -6,11 +6,11 @@ import { range } from 'rxjs';
   templateUrl: './pagination.component.html',
   styleUrls: ['./pagination.component.css']
 })
-export class PaginationComponent implements OnInit {
+export class PaginationComponent implements OnInit, OnChanges {
 
   @Output() loadResourceByPage = new EventEmitter<number>();
-  @Input() range: number = 10;
   @Input() totalPages: number;
+  @Input() range: number = 10;
   page: number = 1;
   minpage = 1
   maxpage = 1;
@@ -22,7 +22,16 @@ export class PaginationComponent implements OnInit {
     this.buildPagesArray();
   }
 
+  ngOnChanges(){
+    console.log("total Pages:" + this.totalPages);
+    console.log("Range:" + this.range);
+    this.minpage = 1;
+    this.maxpage = this.minpage + this.range;
+    this.buildPagesArray();
+  }
+
   nextPage() {
+    console.log(this.range);
     if (this.page < this.totalPages) {
       this.page += 1;
       this.loadResourceByPage.emit(this.page);
@@ -62,6 +71,7 @@ export class PaginationComponent implements OnInit {
   buildPagesArray() {
     // const iter = range(this.minpage, this.maxpage);
     // iter.subscribe(i=>this.currentPages.push(i));
+    console.log("Building Array Pages");
     this.currentPages = [];
     for (let i = this.minpage; i < this.maxpage; i++) {
       this.currentPages.push(i);

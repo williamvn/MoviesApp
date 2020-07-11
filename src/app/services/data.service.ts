@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Query } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { TVShow, TVResponse } from '../model/tvshow';
 import { Movie, MovieResponse } from '../model/movie';
@@ -21,15 +21,18 @@ export class DataService {
 
   totalMoviePages: number;
   totalTVPages: number;
-  private queryFlag: boolean;
+
+  private cachedQuery: string = "";
+  private cachedPage: number = 1;
+
   constructor(private httpClient: HttpClient) { }
 
   loadMovies(page = 1): Observable<boolean> {
-    console.log("Getting Movies");
-    if (this.queryFlag) {
-      console.log("Cached Query");
+    if (this.cachedQuery) {
+      if (this.cachedPage != page) {
+        this.unifiedSearchQuery(this.cachedQuery, page);
+      }
       return new Observable<boolean>((observer) => observer.next(true));
-
     }
     const params = new HttpParams()
       .set('api_key', this.API_KEY)
@@ -46,7 +49,12 @@ export class DataService {
   }
 
   loadTVShows(page = 1): Observable<boolean> {
-    if (this.queryFlag) {
+    if (this.cachedQuery) {
+      // console.log("cached Query " + this.cachedQuery);
+      // console.log("cached page " + this.cachedPage + " vs page: " + page);
+      if (this.cachedPage != page) {
+        this.unifiedSearchQuery(this.cachedQuery, page);
+      }
       return new Observable<boolean>((observer) => observer.next(true));
     }
     const params = new HttpParams()
@@ -64,25 +72,24 @@ export class DataService {
   }
 
   unifiedSearchQuery(query: string, page: number = 1): void {
-    if (query == "") {
-      this.queryFlag = false;
+    if (query == "" || (this.cachedQuery == query && this.cachedPage == page)) {
       forkJoin(this.loadMovies(), this.loadTVShows()).subscribe();
     }
     else {
-      this.queryFlag = true;
-      console.log("searching " + query);
       forkJoin(this.searchQuery(query, page, "tv"), this.searchQuery(query, page, "movie"))
         .subscribe((response: [TVResponse, MovieResponse]) => {
-          console.log("Result Collected");
-          console.log(response);
           this.tvshowSubject.next(response[0].results);
+          this.totalTVPages = response[0].total_pages;
+
           this.movieSubject.next(response[1].results);
+          this.totalMoviePages = response[1].total_pages;
         });
     }
+    this.cachedQuery = query;
+    this.cachedPage = page;
   }
 
   private searchQuery(query: string, page: number, source: string) {
-    console.log("Retrieving query:" + query + " from " + source);
     const params = new HttpParams()
       .set('api_key', this.API_KEY)
       .set('language', this.LANGUAGE)

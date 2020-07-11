@@ -5,5 +5,5 @@
     </div>
 </div>
 <div class="d-flex justify-content-center">
-    <app-pagination [totalPages]="totalPages" (loadResourceByPage)="loadPage($event)"></app-pagination>
+    <app-pagination [totalPages]="totalPages" [range] = "range" (loadResourceByPage)="loadPage($event)"></app-pagination>
 </div>

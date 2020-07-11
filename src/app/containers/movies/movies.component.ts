@@ -11,7 +11,8 @@ export class MoviesComponent implements OnInit {
 
   movies: Movie[] = [];
   totalPages: number;
-  type: string = "movie"
+  type: string = "movie";
+  range: number = 10;
   constructor(private data: DataService) { }
 
   ngOnInit(): void {
@@ -21,8 +22,11 @@ export class MoviesComponent implements OnInit {
   loadPage(p: number = 1) {
     this.data.loadMovies(p).subscribe(success => {
       if (success) {
-        this.data.movies$.subscribe(m => this.movies = m);
-        this.totalPages = this.data.totalMoviePages;
+        this.data.movies$.subscribe(m => {
+          this.movies = m;
+          this.totalPages = this.data.totalMoviePages;
+          this.range = Math.min(this.totalPages, 10);
+        });
       }
       else {
         alert("The Movies Couldn't load");
