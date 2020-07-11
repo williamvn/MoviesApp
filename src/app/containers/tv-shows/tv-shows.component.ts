@@ -12,7 +12,7 @@ export class TvShowsComponent implements OnInit {
   tvshows: TVShow[] = [];
   totalPages:number;
   type:string = "tv-show";
-  range:number = 10;
+  range:number = 5;
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class TvShowsComponent implements OnInit {
          this.data.tvshows$.subscribe(m => {
            this.tvshows = m
            this.totalPages = this.data.totalTVPages;
-           this.range = Math.min(10, this.totalPages);
+           this.range = Math.min(5, this.totalPages);
           });
         }
         else{
