@@ -15,7 +15,6 @@ export class TvShowsComponent implements OnInit {
   constructor(private data:DataService) { }
 
   ngOnInit(): void {
-    console.log("TV Show Component Initializating...");
     this.loadPage();
   }
 

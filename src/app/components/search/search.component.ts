@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventEmitter } from 'protractor';
-import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-search',
@@ -10,12 +9,13 @@ import { Router } from '@angular/router';
 export class SearchComponent implements OnInit {
 
   searchQuery:string = "";
-  constructor(public router: Router) { }
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
   }
 
   sendQuery(){
-    console.log(this.searchQuery);
+    console.log("Requesting to send query")
+    this.data.unifiedSearchQuery(this.searchQuery);
   }
 }

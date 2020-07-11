@@ -9,26 +9,24 @@ import { Movie } from '../../model/movie';
 })
 export class MoviesComponent implements OnInit {
 
-  movies:Movie[] = [];
-  totalPages:number;
-  type:string = "movie"
-  constructor(private data:DataService) { }
+  movies: Movie[] = [];
+  totalPages: number;
+  type: string = "movie"
+  constructor(private data: DataService) { }
 
   ngOnInit(): void {
-    console.log("Movies Component Initializating...");
     this.loadPage();
   }
 
-  loadPage(p:number = 1){
-    this.data.loadMovies().subscribe(success =>
-      {
-        if(success){
-         this.data.movies$.subscribe(m => this.movies = m);
-         this.totalPages = this.data.totalMoviePages;
-        }
-        else{
-          alert("The Movies Couldn't load");
-        }
+  loadPage(p: number = 1) {
+    this.data.loadMovies(p).subscribe(success => {
+      if (success) {
+        this.data.movies$.subscribe(m => this.movies = m);
+        this.totalPages = this.data.totalMoviePages;
+      }
+      else {
+        alert("The Movies Couldn't load");
+      }
     });
   }
 
