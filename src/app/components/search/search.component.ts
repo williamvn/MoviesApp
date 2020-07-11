@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
   }
 
   sendQuery(){
-    console.log("Requesting to send query")
+    // console.log("Requesting to send query")
     this.data.unifiedSearchQuery(this.searchQuery);
   }
 }

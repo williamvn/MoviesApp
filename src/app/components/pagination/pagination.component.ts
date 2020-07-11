@@ -23,8 +23,8 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(){
-    console.log("total Pages:" + this.totalPages);
-    console.log("Range:" + this.range);
+    // console.log("total Pages:" + this.totalPages);
+    // console.log("Range:" + this.range);
     this.minpage = 1;
     this.maxpage = this.minpage + this.range;
     this.buildPagesArray();
@@ -71,7 +71,6 @@ export class PaginationComponent implements OnInit, OnChanges {
   buildPagesArray() {
     // const iter = range(this.minpage, this.maxpage);
     // iter.subscribe(i=>this.currentPages.push(i));
-    console.log("Building Array Pages");
     this.currentPages = [];
     for (let i = this.minpage; i < this.maxpage; i++) {
       this.currentPages.push(i);

@@ -16,6 +16,7 @@ import { HomeComponent } from './containers/home/home.component';
 import { ProductDetailsComponent } from './containers/product-details/product-details.component';
 import { SearchComponent } from './components/search/search.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
+import { ListComponent } from './containers/list/list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NotFoundComponent } from './containers/not-found/not-found.component';
     HomeComponent,
     ProductDetailsComponent,
     SearchComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { TvShowsComponent } from './containers/tv-shows/tv-shows.component';
 import { HomeComponent } from './containers/home/home.component';
 import { ProductDetailsComponent } from './containers/product-details/product-details.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
+import { ListComponent } from './containers/list/list.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path:"movies", component: MoviesComponent},
   {path:"tv-shows", component:TvShowsComponent},
   {path:":product/:productId", component:ProductDetailsComponent},
+  {path:"my-list", component: ListComponent},
   {path:"**", component:NotFoundComponent}
 ];
 

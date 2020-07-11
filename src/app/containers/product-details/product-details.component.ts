@@ -54,4 +54,9 @@ export class ProductDetailsComponent implements OnInit {
     i = Math.floor(i);
     return new Array(i);
   }
+
+  addProduct(){
+    console.log(this.data.list);
+    this.data.list.push(this.product);
+  }
 }

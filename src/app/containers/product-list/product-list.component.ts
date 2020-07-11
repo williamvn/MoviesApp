@@ -6,16 +6,12 @@ import { Product } from '../../model/product';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
-export class ProductListComponent implements OnInit, OnChanges {
+export class ProductListComponent implements OnInit {
   @Input()
   products:Product[];
   @Input()
   type:string;
   constructor() { }
-
-  ngOnChanges(){
-    console.log(this.products);
-  }
 
   ngOnInit(): void {
   }

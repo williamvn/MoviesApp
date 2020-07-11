@@ -5,6 +5,7 @@ import { Movie, MovieResponse } from '../model/movie';
 import { map } from "rxjs/operators";
 import { Observable, BehaviorSubject, of } from 'rxjs';
 import { forkJoin } from 'rxjs';
+import { ProductDetail } from '../model/product-detail';
 
 
 @Injectable()
@@ -13,19 +14,46 @@ export class DataService {
   BASE_URI = "https://api.themoviedb.org/3/";
   LANGUAGE = "en-US";
 
+  // Fields
   private tvshowSubject = new BehaviorSubject<TVShow[]>([]);
-  tvshows$: Observable<TVShow[]> = this.tvshowSubject.asObservable();
+  private _tvshows$: Observable<TVShow[]> = this.tvshowSubject.asObservable();
 
   private movieSubject = new BehaviorSubject<Movie[]>([]);
-  movies$: Observable<Movie[]> = this.movieSubject.asObservable();
+  private _movies$: Observable<Movie[]> = this.movieSubject.asObservable();
 
-  totalMoviePages: number;
-  totalTVPages: number;
+  private _totalMoviePages: number;
+  private _totalTVPages: number;
 
+  private _list: ProductDetail[] = [];
+
+  //Properties
+  get movies$(){
+    return this._movies$;
+  }
+
+  get tvshows$(){
+    return this._tvshows$;
+  }
+
+  get totalMoviePages(){
+    return this._totalMoviePages;
+  }
+
+  get totalTVPages(){
+    return this._totalTVPages;
+  }
+
+  get list(){
+    return this._list;
+  }
+
+  //Cache
   private cachedQuery: string = "";
   private cachedPage: number = 1;
 
   constructor(private httpClient: HttpClient) { }
+
+  //Methods
 
   loadMovies(page = 1): Observable<boolean> {
     if (this.cachedQuery) {
@@ -43,7 +71,7 @@ export class DataService {
       .pipe(
         map((data: MovieResponse) => {
           this.movieSubject.next(data.results);
-          this.totalMoviePages = data.total_pages;
+          this._totalMoviePages = data.total_pages;
           return true;
         }));
   }
@@ -66,7 +94,7 @@ export class DataService {
       .pipe(
         map((data: TVResponse) => {
           this.tvshowSubject.next(data.results);
-          this.totalTVPages = data.total_pages;
+          this._totalTVPages = data.total_pages;
           return true;
         }));
   }
@@ -79,10 +107,10 @@ export class DataService {
       forkJoin(this.searchQuery(query, page, "tv"), this.searchQuery(query, page, "movie"))
         .subscribe((response: [TVResponse, MovieResponse]) => {
           this.tvshowSubject.next(response[0].results);
-          this.totalTVPages = response[0].total_pages;
+          this._totalTVPages = response[0].total_pages;
 
           this.movieSubject.next(response[1].results);
-          this.totalMoviePages = response[1].total_pages;
+          this._totalMoviePages = response[1].total_pages;
         });
     }
     this.cachedQuery = query;
