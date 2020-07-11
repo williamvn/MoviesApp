@@ -1,22 +1,23 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark p-4 bg-solid-red">
-      <a class="navbar-brand" routerLink="/"> WatchList</a>
-      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/movies"> Movies </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/tv-shows">  TV Shows</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/my-list"> My List </a>
-          </li>
-        </ul>
-        <app-search></app-search>
-      </div>
+    <a class="navbar-brand" routerLink="/"> WatchList</a>
+    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
+      aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapsed()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngClass]="{'collapse': collapsed, 'navbar-collapse': true}" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/movies"> Movies </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/tv-shows"> TV Shows</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/my-list"> My List </a>
+        </li>
+      </ul>
+      <app-search></app-search>
+    </div>
   </nav>
 </header>

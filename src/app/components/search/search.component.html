@@ -1,4 +1,8 @@
 <form #myForm = "ngForm" (ngSubmit) = "sendQuery()" class="form-inline my-2 my-lg-0 searchTopBar">
-    <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchQuery" (keyup)="sendQuery()" placeholder="Search" aria-label="Search" name="Search">
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    <div class="input-group md-form form-sm form-1 pl-0">
+        <div class="input-group-prepend">
+          <button type="submit" class="btn btn-dark search-color"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </div>
+        <input class="form-control my-0 py-1" type="search" [(ngModel)]="searchQuery" (keyup)="sendQuery()" placeholder="Search" aria-label="Search" name="Search">
+      </div>
 </form>
