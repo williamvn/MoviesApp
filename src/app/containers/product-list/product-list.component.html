@@ -6,5 +6,15 @@
             <h3 class="muted" *ngIf="p.title">{{p.title}}</h3>
             <h3 class="muted" *ngIf="p.name">{{p.name}}</h3>
         </div>
+        <div class="mt-5" *ngIf="products.length == 0">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="../../../assets/img/NoVideosFounds.png" width= 100%>
+                </div>
+                <div class="col-md-6 my-5">
+                    <h3 class="my-5 p-5 pull-left">No Videos Available</h3>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
