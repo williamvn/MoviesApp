@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventEmitter } from 'protractor';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,7 @@ import { EventEmitter } from 'protractor';
 export class SearchComponent implements OnInit {
 
   searchQuery:string = "";
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
   }

@@ -20,6 +20,7 @@ export class DataService {
 
   loadMovies(page = 1):Observable<boolean> {
     console.log("Getting Movies");
+    
     const params = new HttpParams()
       .set('api_key', this.API_KEY)
       .set('language', this.LANGUAGE)
@@ -47,5 +48,9 @@ export class DataService {
           this.totalTVPages = data.total_pages;
           return true;
         }));
+  }
+
+  searchQuery(query:string){
+    //update tvshow and movies
   }
 }

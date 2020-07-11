@@ -15,6 +15,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { SearchComponent } from './search/search.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SearchComponent } from './search/search.component';
     PaginationComponent,
     HomeComponent,
     ProductDetailsComponent,
-    SearchComponent
+    SearchComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
