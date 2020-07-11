@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from '../shared/data.service';
+import { DataService } from '../../services/data.service';
 import * as _ from "lodash";
-import { TVShow } from '../shared/model/tvshow';
-import { Movie } from '../shared/model/movie';
-import { ProductDetail } from '../shared/model/product-detail';
+import { TVShow } from '../../model/tvshow';
+import { Movie } from '../../model/movie';
+import { ProductDetail } from '../../model/product-detail';
 import { map, filter } from "rxjs/operators";
 
 @Component({

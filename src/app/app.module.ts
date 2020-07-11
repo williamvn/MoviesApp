@@ -5,17 +5,17 @@ import { FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { TopBarComponent } from './top-bar/top-bar.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { MoviesComponent } from './movies/movies.component';
-import { DataService } from './shared/data.service';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { ProductListComponent } from './containers/product-list/product-list.component';
+import { MoviesComponent } from './containers/movies/movies.component';
+import { DataService } from './services/data.service';
 import { HttpClientModule } from '@angular/common/http';
-import { TvShowsComponent } from './tv-shows/tv-shows.component';
-import { PaginationComponent } from './pagination/pagination.component';
-import { HomeComponent } from './home/home.component';
-import { ProductDetailsComponent } from './product-details/product-details.component';
-import { SearchComponent } from './search/search.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { TvShowsComponent } from './containers/tv-shows/tv-shows.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { HomeComponent } from './containers/home/home.component';
+import { ProductDetailsComponent } from './containers/product-details/product-details.component';
+import { SearchComponent } from './components/search/search.component';
+import { NotFoundComponent } from './containers/not-found/not-found.component';
 
 @NgModule({
   declarations: [

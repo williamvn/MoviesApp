@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../shared/data.service';
-import { TVShow } from '../shared/model/tvshow';
+import { DataService } from '../../services/data.service';
+import { TVShow } from '../../model/tvshow';
 
 @Component({
   selector: 'app-tv-shows',

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { TVShow, TVResponse } from './model/tvshow';
-import { Movie, MovieResponse } from './model/movie';
+import { TVShow, TVResponse } from '../model/tvshow';
+import { Movie, MovieResponse } from '../model/movie';
 import { map } from "rxjs/operators";
 import { Observable, BehaviorSubject } from 'rxjs';
 

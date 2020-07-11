@@ -1,6 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { range } from 'rxjs';
-import { build$ } from 'protractor/built/element';
 
 @Component({
   selector: 'app-pagination',
