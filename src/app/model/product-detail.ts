@@ -6,4 +6,5 @@ export interface ProductDetail{
     overview:string,
     poster_path:string,
     backdrop_path:string,
+    type?:string
 }

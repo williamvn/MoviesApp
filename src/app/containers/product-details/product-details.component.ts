@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   product: ProductDetail;
   stars: number[];
   onList: boolean = false;
+  type: string;
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
@@ -33,15 +34,20 @@ export class ProductDetailsComponent implements OnInit {
               this.product = this.mapToProductDetail(movie);
             });
           }
-          });
-      }
-      else if (productType == "tv-show") {
-        this.data.tvshows$.subscribe(tvs => {
-          this.product = tvs.find(tv => tv.id == productId);
-          if(!this.product){
-            this.data.searchTVDetail(productId).subscribe(tv => {this.product = tv});
+          else {
+            this.product = this.mapToProductDetail(movie);
           }
         });
+        this.product.type = "movie";
+      }
+      else if (productType == "tv") {
+        this.data.tvshows$.subscribe(tvs => {
+          this.product = tvs.find(tv => tv.id == productId);
+          if (!this.product) {
+            this.data.searchTVDetail(productId).subscribe(tv => { this.product = tv });
+          }
+        });
+        this.product.type = "tv";
       }
       else {
         this.router.navigate(["**"]);

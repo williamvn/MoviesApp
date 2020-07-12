@@ -11,7 +11,7 @@ export class TvShowsComponent implements OnInit {
 
   tvshows: TVShow[] = [];
   totalPages:number;
-  type:string = "tv-show";
+  type:string = "tv";
   range:number = 5;
   constructor(private data:DataService) { }
 
