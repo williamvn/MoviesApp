@@ -21,7 +21,6 @@ export class ProductDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
-    console.log("Details");
     this.route.paramMap.subscribe(params => {
       var productType = params.get('product');
       var productId = +params.get('productId');
