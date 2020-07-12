@@ -13,3 +13,8 @@
 .overlay:hover{
     width: 100%;
 }
+
+.no-collection-title{
+    color: lightgrey;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
