@@ -1,7 +1,7 @@
 # MoviesApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.9. The project consumes from a database of movies and tv shows from the web API, [Movie DB](https://developers.themoviedb.org/). Then each movie and tv shows are shown to the user using a friendly and responsive design.
-![Movies App](https://github.com/williamvn/MoviesApp/blob/master/ShowsPicture.jpg?raw=true)
+![Movies App](https://github.com/williamvn/MoviesApp/blob/master/ShowsPicture.png?raw=true)
 ## Functionalities
 #### TV Shows shown by most popular.
 #### Movies shown by most popular.
