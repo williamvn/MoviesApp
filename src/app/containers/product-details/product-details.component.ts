@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../../services/data.service';
 import * as _ from "lodash";
 import { TVShow } from '../../model/tvshow';
@@ -16,8 +16,8 @@ export class ProductDetailsComponent implements OnInit {
 
   product: ProductDetail;
   stars: number[];
-  onList:boolean = false;
-  constructor(private route: ActivatedRoute, private data: DataService) { }
+  onList: boolean = false;
+  constructor(private route: ActivatedRoute, private router: Router, private data: DataService) { }
 
   ngOnInit(): void {
     console.log("Details");
@@ -27,23 +27,34 @@ export class ProductDetailsComponent implements OnInit {
       if (productType === "movie") {
         this.data.movies$.subscribe(ms => {
           var movie = ms.find(m => m.id == productId);
-          this.product = this.mapToProductDetail(movie);
+          if (!movie) {
+            this.data.searchMovieDetail(productId).subscribe(m => {
+              movie = m;
+              this.product = this.mapToProductDetail(movie);
+            });
+          }
+          });
+      }
+      else if (productType == "tv-show") {
+        this.data.tvshows$.subscribe(tvs => {
+          this.product = tvs.find(tv => tv.id == productId);
+          if(!this.product){
+            this.data.searchTVDetail(productId).subscribe(tv => {this.product = tv});
+          }
         });
       }
       else {
-        this.data.tvshows$.subscribe(tvs => {
-          this.product = tvs.find(tv => tv.id == productId);
-        });
+        this.router.navigate(["**"]);
       }
     });
-    if(this.data.list.find(el=>el.id == this.product.id)){
+    if (this.data.list.find(el => el.id == this.product.id)) {
       this.onList = true;
     }
   }
 
   private mapToProductDetail(movie: Movie): ProductDetail {
     return {
-      id:movie.id,
+      id: movie.id,
       name: movie.title,
       first_air_date: movie.release_date,
       vote_average: movie.vote_average,
@@ -58,7 +69,7 @@ export class ProductDetailsComponent implements OnInit {
     return new Array(i);
   }
 
-  addProduct(){
+  addProduct() {
     this.onList = true;
     this.data.list.push(this.product);
   }

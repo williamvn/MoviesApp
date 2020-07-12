@@ -99,6 +99,22 @@ export class DataService {
         }));
   }
 
+  searchMovieDetail(id=1):Observable<Movie>{
+    const params = new HttpParams()
+      .set('api_key', this.API_KEY)
+      .set('language', this.LANGUAGE)
+
+    return this.httpClient.get<Movie>(this.BASE_URI + "movie/" + id, { params });
+  }
+
+  searchTVDetail(id=1):Observable<TVShow>{
+    const params = new HttpParams()
+      .set('api_key', this.API_KEY)
+      .set('language', this.LANGUAGE)
+
+    return this.httpClient.get<TVShow>(this.BASE_URI + "tv/" + id, { params });
+  }
+
   unifiedSearchQuery(query: string, page: number = 1): void {
     if (query == "" || (this.cachedQuery == query && this.cachedPage == page)) {
       forkJoin(this.loadMovies(), this.loadTVShows()).subscribe();
