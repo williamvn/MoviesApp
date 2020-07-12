@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
 
   product: ProductDetail;
   stars: number[];
+  onList:boolean = false;
   constructor(private route: ActivatedRoute, private data: DataService) { }
 
   ngOnInit(): void {
@@ -35,18 +36,20 @@ export class ProductDetailsComponent implements OnInit {
         });
       }
     });
+    if(this.data.list.find(el=>el.id == this.product.id)){
+      this.onList = true;
+    }
   }
 
   private mapToProductDetail(movie: Movie): ProductDetail {
     return {
+      id:movie.id,
       name: movie.title,
-      genre_ids: movie.genre_ids,
       first_air_date: movie.release_date,
       vote_average: movie.vote_average,
       overview: movie.overview,
       poster_path: movie.poster_path,
-      backdrop_path: movie.backdrop_path,
-      origin_country: null
+      backdrop_path: movie.backdrop_path
     }
   }
 
@@ -56,7 +59,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addProduct(){
-    console.log(this.data.list);
+    this.onList = true;
     this.data.list.push(this.product);
   }
 }

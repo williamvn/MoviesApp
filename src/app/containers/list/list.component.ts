@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { ProductDetail } from 'src/app/model/product-detail';
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-list',
@@ -16,4 +17,8 @@ export class ListComponent implements OnInit {
     this.products = this.data.list;
   }
 
+  remove(id){
+    _.remove(this.data.list, el => el.id == id);
+    this.products = this.data.list;
+  }
 }

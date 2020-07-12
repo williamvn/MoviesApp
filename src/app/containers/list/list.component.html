@@ -1,8 +1,27 @@
 <div class="container">
     <h3 class="mt-5">Your List</h3>
-    <div *ngFor="let p of products">
-        <div class="row">
-            <img src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{p.poster_path}}"  width="50%">
+    <div class="my-3" *ngFor="let p of products">
+        <div class="element p-0">
+            <div class="row">
+                <div class="col-sm-2">
+                    <img class="ml-0" src="https://image.tmdb.org/t/p/w600_and_h900_bestv2/{{p.poster_path}}"
+                        width="100%">
+                </div>
+                <div class="col-sm-10">
+                    <div class="d-flex flex-column">
+                        <h3 class="mt-3">{{p.name}}</h3>
+                        <p class="mr-2 text-crop">{{p.overview}}</p>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <button class="btn btn-dark m-2">Get</button>
+                                <button class="btn btn-danger m-2" (click)="remove(p.id)">Remove</button>
+                                <button class="btn btn-outline-dark m-2">See Details</button>
+                            </div>
+                            <h6 class="align-self-end m-3"> Rating: {{p.vote_average}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
