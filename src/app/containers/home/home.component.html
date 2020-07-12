@@ -1,10 +1,24 @@
 <div class="container">
-    <div class="d-flex align-items-center justify-content-center p-3 text-white-50 text-center title-bar rounded box-shadow mt-5">
+    <div
+        class="d-flex align-items-center justify-content-center p-3 text-white-50 text-center title-bar rounded box-shadow mt-5">
         <div class="lh-100">
-          <h5 class="mb-0 text-white lh-100">The most populars movies and tv shows available for you! </h5>
+            <h5 class="mb-0 text-white lh-100">The most populars movies and tv shows available for you! </h5>
         </div>
-      </div>
+    </div>
     <div class="row services">
+        <div class="col-md-4">
+            <div class="service" routerLink="tv-shows">
+                <div class="icon-holder">
+                    <!-- <img src="img/icons/guru-blue.png" alt="" class="icon"> -->
+                    <h1><i class="fa fa-television" aria-hidden="true"></i></h1>
+                </div>
+                <h4 class="heading">TV Shows</h4>
+                <h1 class="description">
+                    <img src="../../assets/img/redSofa.jpg" width="100%">
+                </h1>
+            </div>
+        </div>
+        
         <div class="col-md-4">
             <div class="service" routerLink="movies">
                 <div class="icon-holder">
@@ -18,26 +32,15 @@
                 </h1>
             </div>
         </div>
-        <div class="col-md-4">
-            <div class="service" routerLink="tv-shows">
-                <div class="icon-holder">
-                    <!-- <img src="img/icons/guru-blue.png" alt="" class="icon"> -->
-                    <h1><i class="fa fa-television" aria-hidden="true"></i></h1>
-                </div>
-                <h4 class="heading">TV Shows</h4>
-                <h1 class="description">
-                    <img src="../../assets/img/redSofa.jpg" width="100%">
-                </h1>
-            </div>
-        </div>
+        
         <div class="col-md-4">
             <div class="service" routerLink="my-list">
                 <div class="icon-holder">
-                    <!-- <img src="img/icons/weight-blue.png" alt="" class="icon"> -->
+                    <h1><i class="fa fa-list-alt" aria-hidden="true"></i></h1>
                 </div>
                 <h4 class="heading">My List</h4>
                 <h1 class="description">
-                    <i class="fa fa-list-alt" aria-hidden="true"></i>
+                    <img src="../../../assets/img/list.png" alt="" class="icon" width="70%">
                 </h1>
             </div>
         </div>
