@@ -1,5 +1,5 @@
 <div class="container">
-    <h3 class="mt-5">Your List</h3>
+    <h3 class="mt-5" *ngIf="products.length > 0"> <i class="fa fa-list-alt" aria-hidden="true"></i> Your List</h3>
     <div class="my-3" *ngFor="let p of products">
         <div class="element p-0">
             <div class="row">
@@ -24,4 +24,9 @@
             </div>
         </div>
     </div>
+
+    <div class="d-flex justify-content-center" *ngIf="products.length == 0">
+        <img src="../../../assets/img/emptyList.png" >
+    </div>
+
 </div>
