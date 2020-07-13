@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Movie } from '../../model/movie';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css']
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit, OnDestroy {
 
+  private movieSubscription:Subscription;
   movies: Movie[] = [];
   totalPages: number;
   type: string = "movie";
@@ -20,7 +22,7 @@ export class MoviesComponent implements OnInit {
   }
 
   loadPage(p: number = 1) {
-    this.data.loadMovies(p).subscribe(success => {
+    this.movieSubscription = this.data.loadMovies(p).subscribe(success => {
       if (success) {
         this.data.movies$.subscribe(m => {
           this.movies = m;
@@ -32,6 +34,10 @@ export class MoviesComponent implements OnInit {
         alert("The Movies Couldn't load");
       }
     });
+  }
+
+  ngOnDestroy(){
+    this.movieSubscription.unsubscribe();
   }
 
 }
